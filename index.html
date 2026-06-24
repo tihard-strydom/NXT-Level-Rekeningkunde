@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NXT Level Konsepte Rekeningkunde</title>
+<title>NXT Level Rekeningkunde</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* Globale Stylreëls */
@@ -21,6 +21,7 @@ body {
     background-color: #f4f9fc;
     color: #333;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* Navigasiebalk (Navbar) */
@@ -38,37 +39,28 @@ body {
 
 .logo {
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     letter-spacing: 0.5px;
-}
-
-.logo .yellow {
     color: #ffd44f;
-}
-
-.logo .cursive {
-    font-family: 'Caveat', cursive;
-    color: #fff;
-    font-size: 1.8rem;
-    margin-left: 5px;
-    font-weight: normal;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo small {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #e0e0e0;
-    margin-top: -4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: -2px;
 }
 
-.navbar ul {
+.nav-menu {
     display: flex;
     gap: 25px;
     list-style: none;
+    transition: all 0.3s ease;
 }
 
-.navbar ul li a {
+.nav-menu li a {
     text-decoration: none;
     color: #fff;
     font-weight: 600;
@@ -78,7 +70,7 @@ body {
     border-bottom: 2px solid transparent;
 }
 
-.navbar ul li a.active, .navbar ul li a:hover {
+.nav-menu li a.active, .nav-menu li a:hover {
     color: #ffd44f;
     border-bottom: 2px solid #ffd44f;
 }
@@ -99,7 +91,14 @@ body {
     color: #ffd44f;
 }
 
-/* Nuwe Interaktiewe Soekbalk Styl */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* Soekbalk */
 .search-container {
     display: flex;
     align-items: center;
@@ -144,14 +143,10 @@ body {
     padding: 2px 6px;
 }
 
-/* Hero Seksie */
+/* Hero Seksie (Soos Voorbeeld Foto) */
 .hero {
-    background: linear-gradient(135deg, rgba(0, 130, 160, 0.85) 0%, rgba(0, 170, 200, 0.85) 100%), 
-                url('background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 60px 5%;
+    background: url('background.png') center/cover no-repeat, #008eb5; /* Fallback kleur en jou image */
+    padding: 80px 5%;
     color: white;
     display: flex;
     align-items: center;
@@ -160,6 +155,7 @@ body {
     gap: 40px;
     position: relative;
     overflow: hidden;
+    min-height: 500px;
 }
 
 .hero-content {
@@ -169,43 +165,38 @@ body {
 }
 
 .hero-content h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: #ffd44f;
-    margin-bottom: 5px;
-}
-
-.hero-content h2 span {
-    font-family: 'Caveat', cursive;
-    color: #fff;
-    font-size: 3rem;
-    font-weight: normal;
+    margin-bottom: -5px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
 }
 
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1;
     margin-bottom: 25px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
 }
 
-.hero .banner-pill {
+.banner-pill {
     background: white;
-    color: #00465f;
-    padding: 12px 30px;
+    color: #008eb5;
+    padding: 10px 25px;
     border-radius: 50px;
     display: inline-block;
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     letter-spacing: 0.5px;
 }
 
 .hero-buttons {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -213,7 +204,7 @@ body {
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
     text-align: center;
     display: inline-block;
@@ -232,37 +223,49 @@ body {
 
 .btn-outline {
     border: 2px solid white;
+    background: transparent;
     color: white;
 }
 
 .btn-outline:hover {
     background: white;
-    color: #009cb9;
+    color: #008eb5;
     transform: translateY(-2px);
 }
 
-/* Regterkantste Boeke-skema in Hero */
+/* Regterkantste Boeke-skema in Hero (Waaiereffek) */
 .hero-images {
     flex: 1;
     min-width: 350px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    position: relative;
     z-index: 2;
+    height: 350px;
 }
 
 .hero-book-preview {
-    width: 85px;
+    width: 120px;
     height: auto;
     border-radius: 4px;
-    box-shadow: 3px 5px 15px rgba(0,0,0,0.3);
-    transform: rotate(-5deg);
-    transition: transform 0.3s;
+    box-shadow: -5px 10px 25px rgba(0,0,0,0.25);
+    position: absolute;
+    transition: transform 0.4s ease, z-index 0.4s;
+    cursor: pointer;
 }
 
 .hero-book-preview:hover {
-    transform: translateY(-10px) rotate(0deg);
+    transform: translateY(-15px) scale(1.05) !important;
+    z-index: 10 !important;
 }
+
+/* Spesifieke boek plasings vir die waaiereffek */
+.hero-book-preview.b1 { left: 0%; transform: rotate(-12deg) translateY(30px); z-index: 1; }
+.hero-book-preview.b2 { left: 15%; transform: rotate(-6deg) translateY(15px); z-index: 2; }
+.hero-book-preview.b3 { left: 30%; transform: rotate(0deg) translateY(0px); z-index: 3; width: 130px; }
+.hero-book-preview.b4 { left: 47%; transform: rotate(6deg) translateY(15px); z-index: 4; }
+.hero-book-preview.b5 { left: 62%; transform: rotate(12deg) translateY(30px); z-index: 5; }
 
 /* Seksie Titels */
 .section-title {
@@ -275,6 +278,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    text-transform: uppercase;
 }
 
 .section-title::before, .section-title::after {
@@ -298,7 +302,6 @@ body {
     margin: 0 auto;
 }
 
-/* Geen Produkte Gevind Boodskap */
 .no-results {
     grid-column: 1 / -1;
     text-align: center;
@@ -327,7 +330,9 @@ body {
 .card-book-img {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f9fbfd;
+    padding: 10px;
     border-bottom: 1px solid #eef2f5;
 }
 
@@ -548,10 +553,6 @@ body {
     font-family: inherit;
 }
 
-.profile-form input:focus, .profile-form textarea:focus {
-    border-color: #ff8400;
-}
-
 .btn-save-profile {
     width: 100%;
     background: #00364a;
@@ -568,7 +569,7 @@ body {
     background: #00222e;
 }
 
-/* Moderne Mandjie & Profiel Modal (Popup) Windows */
+/* Modals */
 .cart-modal {
     display: none;
     position: fixed;
@@ -602,16 +603,6 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     color: #888;
-    transition: color 0.3s;
-}
-
-.close-modal:hover { color: #333; }
-
-.cart-modal h3 {
-    color: #00364a;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #f4f9fc;
-    padding-bottom: 10px;
 }
 
 .cart-items-list {
@@ -628,15 +619,6 @@ body {
     padding: 12px 0;
     border-bottom: 1px solid #edf2f7;
 }
-
-.cart-item-details { text-align: left; }
-.cart-item-title { font-weight: 700; font-size: 0.9rem; color: #333; }
-.cart-item-meta { font-size: 0.8rem; color: #666; margin-top: 2px; }
-
-.cart-item-right { display: flex; align-items: center; gap: 15px; }
-.cart-item-price { font-weight: 700; color: #00364a; font-size: 0.95rem; }
-.remove-btn { color: #c01c1c; cursor: pointer; font-size: 1rem; transition: transform 0.2s; }
-.remove-btn:hover { transform: scale(1.1); }
 
 .cart-total {
     display: flex;
@@ -664,7 +646,6 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     transition: all 0.3s;
 }
 
@@ -679,7 +660,7 @@ body {
     font-weight: 600;
 }
 
-/* Voetnota / Kenmerke Seksie */
+/* Footer */
 .footer {
     background: #002d3e;
     color: white;
@@ -717,7 +698,6 @@ body {
     color: #a0c1cf;
 }
 
-/* Onderste Footer */
 .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -763,12 +743,49 @@ body {
     color: #00bc8c;
 }
 
-/* Skerm-aanpassings vir selfone */
+/* MEDIA QUERIES (Mobile Friendly) */
+@media (max-width: 900px) {
+    .hero-images {
+        height: 250px;
+    }
+    .hero-book-preview { width: 90px; }
+    .hero-book-preview.b3 { width: 100px; }
+    .hero-content h1 { font-size: 3.5rem; }
+}
+
 @media (max-width: 768px) {
-    .navbar { flex-direction: column; gap: 15px; text-align: center; }
-    .hero { text-align: center; justify-content: center; }
+    .hamburger { display: block; }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #00364a;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    .nav-menu.active { display: flex; }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5%;
+    }
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-content h2 { font-size: 2rem; }
     .hero-buttons { justify-content: center; }
-    .hero-images { display: none; }
+    
+    .hero-images {
+        width: 100%;
+        height: 200px;
+        margin-top: 20px;
+    }
+    .hero-book-preview { width: 70px; position: static; transform: none !important; margin: -10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .hero-book-preview.b3 { width: 80px; z-index: 10; }
+    
     .about-container { flex-direction: column; text-align: center; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .search-container.active .search-input { width: 130px; }
@@ -779,23 +796,27 @@ body {
 
 <nav class="navbar">
     <div class="logo">
-        NXT LEVEL<span class="cursive">Konsepte</span>
+        NXT LEVEL
         <small>Rekeningkunde</small>
     </div>
-    <ul>
+    
+    <div class="hamburger" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <ul class="nav-menu" id="navMenu">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#shop">Shop</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
+    
     <div class="nav-icons">
-        <!-- Nuwe Geaktiveerde Live Soekbalk element -->
         <div class="search-container" id="searchContainer">
             <input type="text" class="search-input" id="searchInput" placeholder="Soek graad of formaat..." oninput="filterProducts()">
             <i class="fas fa-search" onclick="toggleSearch()"></i>
         </div>
         
-        <!-- Profiel Ikoon met Kliek-Aksie -->
         <i class="far fa-user" onclick="toggleProfileModal()"></i>
         
         <div class="cart-icon" onclick="toggleCartModal()">
@@ -807,7 +828,7 @@ body {
 
 <section id="home" class="hero">
     <div class="hero-content">
-        <h2>NXT LEVEL <span class="cursive">Konsepte</span></h2>
+        <h2>NXT LEVEL</h2>
         <h1>Rekeningkunde</h1>
         <div class="banner-pill">KOM LEER LIEFDE EN TEGNIEK!</div>
         <div class="hero-buttons">
@@ -817,11 +838,11 @@ body {
     </div>
     
     <div class="hero-images">
-        <img src="graad8.png" class="hero-book-preview" style="margin-top: 20px;" alt="Graad 8">
-        <img src="graad9.png" class="hero-book-preview" style="margin-top: 10px;" alt="Graad 9">
-        <img src="graad10.png" class="hero-book-preview" style="margin-top: 0px;" alt="Graad 10">
-        <img src="graad11.png" class="hero-book-preview" style="margin-top: 10px;" alt="Graad 11">
-        <img src="graad12.png" class="hero-book-preview" style="margin-top: 20px;" alt="Graad 12">
+        <img src="graad8.png" class="hero-book-preview b1" alt="Graad 8">
+        <img src="graad9.png" class="hero-book-preview b2" alt="Graad 9">
+        <img src="graad10.png" class="hero-book-preview b3" alt="Graad 10">
+        <img src="graad11.png" class="hero-book-preview b4" alt="Graad 11">
+        <img src="graad12.png" class="hero-book-preview b5" alt="Graad 12">
     </div>
 </section>
 
@@ -920,18 +941,18 @@ body {
 </section>
 
 <section id="about" class="about-section">
-    <h2 class="section-title">OOR DIE SKRYWER</h2>
+    <h2 class="section-title">OOR DIE SKRYWERS</h2>
     <div class="about-container">
         <div class="about-image-wrapper">
-            <img src="sunette.jpeg" class="about-img" alt="Sunette Els">
+            <img src="sunette.jpeg" class="about-img" alt="Die NXT Level Span">
         </div>
         <div class="about-text">
-            <h3>Ontmoet Sunette Els</h3>
-            <p>As 'n passievolle en toegewyde Rekeningkunde-onderwyser by die prestigeryke <strong>Grey College in Bloemfontein</strong>, sien ek daagliks hoe leerders worstel met tradisionele handboeke. Te veel skoliere raak verlore in ingewikkelde jargon en vae verduidelikings, wat veroorsaak dat hulle vrees ontwikkel vir 'n vak wat eintlik logies en opwindend behoort te wees.</p>
-            <p>Dit is waarom ek die <strong>NXT Level Konsepte</strong>-reeks ontwikkel het. Hierdie boeke is nie net nog 'n stel reëls nie; dit is 'n beproefde metodologie wat fokus op die heropbou van selfvertroue deur leerders te leer om met <em>liefde en tegniek</em> te dink. Deur visuele strukture, eenvoudige dog kragtige stappe, en praktiese benaderings, oorbrug hierdie gidse die gaping tussen verwarring en uitblinkers-punte.</p>
-            <p>Of jy nou in Graad 8 begin bou aan jou fondant, of in Graad 12 voorberei vir jou finale nasionale eksamen—hierdie reeks is jou persoonlike gids na sukses. Moenie toelaat dat Rekeningkunde jou punte terughou nie. Neem jou akademiese reis na die volgende vlak!</p>
-            <a href="#shop" class="btn btn-orange">Kry Jou Gids Nou</a>
-        </div>
+    <h3>Ontmoet die Span</h3>
+    <p>As 'n groep van 4 passievolle en toegewyde Rekeningkunde-juffrouens (waarvan een 'n Geoktrooieerde Rekenmeester / CA is) by die prestigeryke <strong>Grey College in Bloemfontein</strong>, sien ons daagliks hoe leerders worstel met tradisionele handboeke. Te veel skoliere raak verlore in ingewikkelde jargon en vae verduidelikings, wat veroorsaak dat hulle vrees ontwikkel vir 'n vak wat eintlik logies en opwindend behoort te wees.</p>
+    <p>Dit is waarom ons die <strong>NXT Level Rekeningkunde</strong>-reeks ontwikkel het. Hierdie boeke is nie net nog 'n stel reëls nie; dit is 'n beproefde metodologie wat fokus op die heropbou van selfvertroue deur leerders te leer om met <em>liefde en tegniek</em> te dink. Deur visuele strukture, eenvoudige dog kragtige stappe, en praktiese benaderings, oorbrug hierdie gidse die gaping tussen verwarring en uitblinkers-punte.</p>
+    <p>Of jy nou in Graad 8 begin bou aan jou fondasie, of in Graad 12 voorberei vir jou finale nasionale eksamen—hierdie reeks is jou persoonlike gids na sukses. Moenie toelaat dat Rekeningkunde jou punte terughou nie. Neem jou akademiese reis na die volgende vlak!</p>
+    <a href="#shop" class="btn btn-orange">Kry Jou Gids Nou</a>
+</div>
     </div>
 </section>
 
@@ -939,7 +960,7 @@ body {
     <h2 class="section-title">KONTAK ONS</h2>
     <div class="contact-container">
         <h3>Het jy enige vrae of grootmaatbestellings?</h3>
-        <p style="color: #666; margin-top: 10px;">Sunette Els is gereed om jou of jou skool by te staan met die beste kurrikulum-oplossings.</p>
+        <p style="color: #666; margin-top: 10px;">Ons span is gereed om jou of jou skool by te staan met die beste kurrikulum-oplossings.</p>
         
         <div class="contact-grid">
             <a href="tel:0832126345" class="contact-card phone">
@@ -963,14 +984,12 @@ body {
     </div>
 </section>
 
-<!-- Mandjie Modal (Popup structure) -->
+<!-- Modals ... -->
 <div id="cartModal" class="cart-modal" onclick="closeCartOnOutsideClick(event)">
     <div class="cart-modal-content">
         <span class="close-modal" onclick="toggleCartModal()">&times;</span>
         <h3>Jou Mandjie</h3>
-        <ul id="cartItemsList" class="cart-items-list">
-            <!-- Items via JS -->
-        </ul>
+        <ul id="cartItemsList" class="cart-items-list"></ul>
         <div class="cart-total">
             <span>Totaal:</span>
             <span id="cartTotalAmount">R0.00</span>
@@ -981,23 +1000,18 @@ body {
     </div>
 </div>
 
-<!-- NUWE Profiel Modal (Popup structure) -->
 <div id="profileModal" class="cart-modal" onclick="closeProfileOnOutsideClick(event)">
     <div class="cart-modal-content">
         <span class="close-modal" onclick="toggleProfileModal()">&times;</span>
         <h3>My Profiel</h3>
-        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Stoor jou besonderhede eenmalig hier. Dit sal outomaties by jou WhatsApp-bestelling ingesluit word!</p>
-        
+        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Stoor jou besonderhede eenmalig hier.</p>
         <div class="profile-form">
             <label for="profName">Volledige Naam & Van:</label>
             <input type="text" id="profName" placeholder="Bv. Johan Smit">
-            
             <label for="profEmail">E-pos Adres:</label>
             <input type="email" id="profEmail" placeholder="Bv. johan@gmail.com">
-            
             <label for="profAddress">Afleweringsadres of Skoolnaam:</label>
             <textarea id="profAddress" rows="3" placeholder="Bv. Grey College, Jannie de Waal Straat, Bloemfontein, 9301"></textarea>
-            
             <button class="btn-save-profile" onclick="saveProfileData()">Stoor Profiel</button>
         </div>
     </div>
@@ -1005,36 +1019,11 @@ body {
 
 <footer class="footer">
     <div class="features-bar">
-        <div class="feature-item">
-            <i class="fas fa-shield-alt"></i>
-            <div class="feature-text">
-                <strong>Veilige Skakel</strong>
-                <span>Persoonlike afhandeling</span>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-cloud-download-alt"></i>
-            <div class="feature-text">
-                <strong>Direkte Aflaai</strong>
-                <span>E-boeke direk na aankoop</span>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-truck"></i>
-            <div class="feature-text">
-                <strong>Vinnige Aflewering</strong>
-                <span>Fisiese boeke landwyd</span>
-            </div>
-        </div>
-        <div class="feature-item">
-            <i class="fas fa-headset"></i>
-            <div class="feature-text">
-                <strong>Kliëntediens</strong>
-                <span>Ons is hier om te help</span>
-            </div>
-        </div>
+        <div class="feature-item"><i class="fas fa-shield-alt"></i><div class="feature-text"><strong>Veilige Skakel</strong><span>Persoonlike afhandeling</span></div></div>
+        <div class="feature-item"><i class="fas fa-cloud-download-alt"></i><div class="feature-text"><strong>Direkte Aflaai</strong><span>E-boeke direk na aankoop</span></div></div>
+        <div class="feature-item"><i class="fas fa-truck"></i><div class="feature-text"><strong>Vinnige Aflewering</strong><span>Fisiese boeke landwyd</span></div></div>
+        <div class="feature-item"><i class="fas fa-headset"></i><div class="feature-text"><strong>Kliëntediens</strong><span>Ons is hier om te help</span></div></div>
     </div>
-
     <div class="footer-bottom">
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1042,7 +1031,7 @@ body {
             <a href="https://wa.me/27832126345?text=Hallo%20Sunette,%20ek%20stel%20belang%20in%20die%20NXT%20Level%20Rekeningkunde%20boeke." target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <div>
-            <p>&copy; 2026 NXT Level Konsepte Rekeningkunde. Alle regte voorbehou.</p>
+            <p>&copy; 2026 NXT Level Rekeningkunde. Alle regte voorbehou.</p>
         </div>
         <div class="payment-gateways">
             <span class="payfast-text">pay<span>fast</span></span>
@@ -1052,27 +1041,27 @@ body {
     </div>
 </footer>
 
-<!-- JAVASCRIPT LOGIKA -->
 <script>
-// Laai gestoorde profieldata as die bladsy oopmaak
+// --- Mobile Menu Toggle ---
+function toggleMobileMenu() {
+    document.getElementById('navMenu').classList.toggle('active');
+}
+
 window.onload = function() {
     loadProfileData();
 };
 
-// --- 1. NAVIGASIE MET SCROLL-SPY ---
 const sections = document.querySelectorAll('section, .hero');
-const navLinks = document.querySelectorAll('.navbar ul li a');
+const navLinks = document.querySelectorAll('.nav-menu li a');
 
 window.addEventListener('scroll', () => {
     let currentSection = 'home';
-    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         if (window.scrollY >= (sectionTop - 160)) {
             currentSection = section.getAttribute('id');
         }
     });
-
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${currentSection}`) {
@@ -1081,7 +1070,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// --- 2. LIVE SOEK-FUNKSIE (SEARCH) ---
 function toggleSearch() {
     const container = document.getElementById('searchContainer');
     container.classList.toggle('active');
@@ -1089,7 +1077,7 @@ function toggleSearch() {
         document.getElementById('searchInput').focus();
     } else {
         document.getElementById('searchInput').value = '';
-        filterProducts(); // Herstel rooster
+        filterProducts(); 
     }
 }
 
@@ -1097,10 +1085,8 @@ function filterProducts() {
     const filterValue = document.getElementById('searchInput').value.toLowerCase();
     const cards = document.querySelectorAll('#productGrid .card');
     let visibleCount = 0;
-
     cards.forEach(card => {
         const title = card.getAttribute('data-title').toLowerCase();
-        // Kyk of die soekwoord in die titel pas
         if(title.includes(filterValue)) {
             card.style.display = 'flex';
             visibleCount++;
@@ -1108,29 +1094,19 @@ function filterProducts() {
             card.style.display = 'none';
         }
     });
-
-    // Wys fouteboodskap as niks gevind is nie
     const noResults = document.getElementById('noResultsMessage');
-    if(visibleCount === 0) {
-        noResults.style.display = 'block';
-    } else {
-        noResults.style.display = 'none';
-    }
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
 }
 
-// --- 3. SKAKEL PRYS OP GROND VAN DROPDOWN FORMAAT ---
 function handleFormatChange(selectElement) {
     const card = selectElement.closest('.card');
     const priceDisplay = card.querySelector('.price');
     const selectedOption = selectElement.options[selectElement.selectedIndex];
     const newPrice = selectedOption.getAttribute('data-price');
-    
     priceDisplay.innerText = `R${newPrice}`;
 }
 
-// --- 4. MANDJIE (CART) LOGIKA ---
 let cart = [];
-
 function updateCartBadge() {
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
     document.querySelector('.cart-badge').innerText = totalItems;
@@ -1143,22 +1119,14 @@ function addToCart(buttonElement) {
     const select = card.querySelector('.format-select');
     const format = select.value;
     const price = parseFloat(select.options[select.selectedIndex].getAttribute('data-price'));
-    
     const cartItemId = `${id}-${format}`;
     const existingItem = cart.find(item => item.cartItemId === cartItemId);
-
+    
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({
-            cartItemId,
-            title,
-            format,
-            price,
-            quantity: 1
-        });
+        cart.push({ cartItemId, title, format, price, quantity: 1 });
     }
-
     updateCartBadge();
     renderCart();
     
@@ -1185,9 +1153,7 @@ function toggleCartModal() {
 }
 
 function closeCartOnOutsideClick(event) {
-    if (event.target.id === 'cartModal') {
-        toggleCartModal();
-    }
+    if (event.target.id === 'cartModal') toggleCartModal();
 }
 
 function renderCart() {
@@ -1200,13 +1166,10 @@ function renderCart() {
         totalElement.innerText = 'R0.00';
         return;
     }
-
     let grandTotal = 0;
-
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         grandTotal += itemTotal;
-
         const li = document.createElement('li');
         li.className = 'cart-item';
         li.innerHTML = `
@@ -1221,30 +1184,24 @@ function renderCart() {
         `;
         listElement.appendChild(li);
     });
-
     totalElement.innerText = `R${grandTotal.toFixed(2)}`;
 }
 
-// --- 5. PROFIEL LOGIKA (LOCAL STORAGE) ---
 function toggleProfileModal() {
     const modal = document.getElementById('profileModal');
     modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
 }
 
 function closeProfileOnOutsideClick(event) {
-    if (event.target.id === 'profileModal') {
-        toggleProfileModal();
-    }
+    if (event.target.id === 'profileModal') toggleProfileModal();
 }
 
 function saveProfileData() {
     const name = document.getElementById('profName').value;
     const email = document.getElementById('profEmail').value;
     const address = document.getElementById('profAddress').value;
-
     const profileData = { name, email, address };
     localStorage.setItem('nxtLevelUserProfile', JSON.stringify(profileData));
-
     alert("Profiel suksesvol opgedateer!");
     toggleProfileModal();
 }
@@ -1259,16 +1216,12 @@ function loadProfileData() {
     }
 }
 
-// --- 6. CHECKOUT NA WHATSAPP MET KLIËNT-DATA ---
 function checkoutToWhatsApp() {
     if (cart.length === 0) {
         alert("Jou mandjie is leeg! Voeg asb. eers produkte by.");
         return;
     }
-
     let message = "Hallo Sunette, ek wil graag die volgende NXT Level Rekeningkunde boeke bestel:\n\n";
-    
-    // Kyk of daar gestoorde kliënt-data is en voeg dit by
     const savedProfile = localStorage.getItem('nxtLevelUserProfile');
     if (savedProfile) {
         const profile = JSON.parse(savedProfile);
@@ -1278,10 +1231,8 @@ function checkoutToWhatsApp() {
         if(profile.address) message += `Adres/Skool: ${profile.address}\n`;
         message += "---------------------------------------\n\n";
     }
-
     message += "*BESTELLING:*\n";
     let total = 0;
-
     cart.forEach((item, index) => {
         const subtotal = item.price * item.quantity;
         message += `${index + 1}. *${item.title}*\n`;
@@ -1290,16 +1241,11 @@ function checkoutToWhatsApp() {
         message += `   Subtotaal: R${subtotal.toFixed(2)}\n\n`;
         total += subtotal;
     });
-
     message += `*Totale Bedrag:* R${total.toFixed(2)}\n\n`;
     message += "Stuur asb. vir my die bankbesonderhede vir 'n EFT / PayFast skakel!";
-
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/27832126345?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, '_blank');
+    window.open(`https://wa.me/27832126345?text=${encodedMessage}`, '_blank');
 }
 </script>
-
 </body>
 </html>
