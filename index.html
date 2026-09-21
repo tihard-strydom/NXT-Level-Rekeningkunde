@@ -6,10 +6,18 @@
 <title>NXT Level Rekeningkunde</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* Globale Stylreëls */
+/* Globale Stylreëls & Luukse Tema */
+:root {
+    --primary-blue: #002b3d;
+    --accent-gold: #d4af37;
+    --gold-hover: #b89628;
+    --bg-overlay: rgba(248, 250, 252, 0.94);
+    --card-shadow: 0 15px 35px rgba(0, 43, 61, 0.08);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,68 +26,73 @@
 }
 
 body {
-    background-color: #f4f9fc;
-    color: #333;
+    background: url('Background.png') center/cover fixed no-repeat, #f8fafc;
+    color: #1e293b;
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-/* Navigasiebalk (Navbar) */
+/* Navigasiebalk */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    background: #00364a;
+    padding: 18px 6%;
+    background: rgba(0, 43, 61, 0.96);
+    backdrop-filter: blur(10px);
     color: #fff;
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 2px solid var(--accent-gold);
 }
 
 .logo {
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: 0.5px;
-    color: #ffd44f;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: 1.5px;
+    color: var(--accent-gold);
     display: flex;
     flex-direction: column;
+    text-transform: uppercase;
 }
 
 .logo small {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: #fff;
+    color: #ffffff;
+    letter-spacing: 2px;
     margin-top: -2px;
 }
 
 .nav-menu {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     list-style: none;
     transition: all 0.3s ease;
 }
 
 .nav-menu li a {
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: color 0.3s;
-    padding-bottom: 5px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding-bottom: 6px;
     border-bottom: 2px solid transparent;
 }
 
 .nav-menu li a.active, .nav-menu li a:hover {
-    color: #ffd44f;
-    border-bottom: 2px solid #ffd44f;
+    color: var(--accent-gold);
+    border-bottom: 2px solid var(--accent-gold);
 }
 
 .nav-icons {
     display: flex;
     align-items: center;
-    gap: 20px;
-    font-size: 1.2rem;
+    gap: 22px;
+    font-size: 1.25rem;
 }
 
 .nav-icons i {
@@ -88,12 +101,12 @@ body {
 }
 
 .nav-icons i:hover {
-    color: #ffd44f;
+    color: var(--accent-gold);
 }
 
 .hamburger {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
     color: white;
 }
@@ -110,7 +123,7 @@ body {
     opacity: 0;
     padding: 6px 0;
     border: none;
-    border-bottom: 2px solid #ffd44f;
+    border-bottom: 2px solid var(--accent-gold);
     background: transparent;
     color: white;
     font-size: 0.9rem;
@@ -133,107 +146,108 @@ body {
 
 .cart-badge {
     position: absolute;
-    top: -10px;
+    top: -8px;
     right: -10px;
-    background: #ff8400;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: bold;
+    background: var(--accent-gold);
+    color: var(--primary-blue);
+    font-size: 0.75rem;
+    font-weight: 800;
     border-radius: 50%;
-    padding: 2px 6px;
+    padding: 2px 7px;
 }
 
-/* Hero Seksie (Soos Voorbeeld Foto) */
+/* Hero Seksie */
 .hero {
-    background: url('background.png') center/cover no-repeat, #008eb5; /* Fallback kleur en jou image */
-    padding: 80px 5%;
+    background: linear-gradient(135deg, rgba(0, 43, 61, 0.92), rgba(0, 20, 30, 0.88)), url('Background.png') center/cover no-repeat;
+    padding: 100px 6%;
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px;
     position: relative;
-    overflow: hidden;
-    min-height: 500px;
+    min-height: 560px;
 }
 
 .hero-content {
     flex: 1;
-    min-width: 300px;
+    min-width: 320px;
     z-index: 2;
 }
 
 .hero-content h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    color: #ffd44f;
-    margin-bottom: -5px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    color: var(--accent-gold);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
 }
 
 .hero-content h1 {
-    font-size: 4.5rem;
-    font-weight: 800;
-    line-height: 1;
+    font-size: 4.2rem;
+    font-weight: 900;
+    line-height: 1.1;
     margin-bottom: 25px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+    letter-spacing: -1px;
 }
 
 .banner-pill {
-    background: white;
-    color: #008eb5;
-    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 12px 28px;
     border-radius: 50px;
     display: inline-block;
-    font-weight: 800;
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 15px;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
 .btn {
-    padding: 14px 30px;
+    padding: 15px 35px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1rem;
     transition: all 0.3s ease;
     text-align: center;
     display: inline-block;
+    letter-spacing: 0.5px;
 }
 
-.btn-orange {
-    background: #ff8400;
-    color: white;
-    box-shadow: 0 4px 15px rgba(255, 132, 0, 0.3);
+.btn-gold {
+    background: linear-gradient(135deg, #d4af37, #b89628);
+    color: var(--primary-blue);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
 }
 
-.btn-orange:hover {
-    background: #e07300;
-    transform: translateY(-2px);
+.btn-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
 }
 
 .btn-outline {
-    border: 2px solid white;
+    border: 2px solid var(--accent-gold);
     background: transparent;
-    color: white;
+    color: #ffffff;
 }
 
 .btn-outline:hover {
-    background: white;
-    color: #008eb5;
-    transform: translateY(-2px);
+    background: var(--accent-gold);
+    color: var(--primary-blue);
+    transform: translateY(-3px);
 }
 
-/* Regterkantste Boeke-skema in Hero (Waaiereffek) */
+/* Boeke Waaiereffek */
 .hero-images {
     flex: 1;
     min-width: 350px;
@@ -242,63 +256,63 @@ body {
     align-items: center;
     position: relative;
     z-index: 2;
-    height: 350px;
+    height: 360px;
 }
 
 .hero-book-preview {
-    width: 120px;
+    width: 130px;
     height: auto;
-    border-radius: 4px;
-    box-shadow: -5px 10px 25px rgba(0,0,0,0.25);
+    border-radius: 6px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     position: absolute;
     transition: transform 0.4s ease, z-index 0.4s;
     cursor: pointer;
 }
 
 .hero-book-preview:hover {
-    transform: translateY(-15px) scale(1.05) !important;
+    transform: translateY(-15px) scale(1.08) !important;
     z-index: 10 !important;
 }
 
-/* Spesifieke boek plasings vir die waaiereffek */
 .hero-book-preview.b1 { left: 0%; transform: rotate(-12deg) translateY(30px); z-index: 1; }
 .hero-book-preview.b2 { left: 15%; transform: rotate(-6deg) translateY(15px); z-index: 2; }
-.hero-book-preview.b3 { left: 30%; transform: rotate(0deg) translateY(0px); z-index: 3; width: 130px; }
+.hero-book-preview.b3 { left: 30%; transform: rotate(0deg) translateY(0px); z-index: 3; width: 140px; }
 .hero-book-preview.b4 { left: 47%; transform: rotate(6deg) translateY(15px); z-index: 4; }
 .hero-book-preview.b5 { left: 62%; transform: rotate(12deg) translateY(30px); z-index: 5; }
 
 /* Seksie Titels */
 .section-title {
     text-align: center;
-    color: #002d3e;
-    font-size: 1.8rem;
+    color: var(--primary-blue);
+    font-size: 2rem;
     font-weight: 800;
-    margin: 50px 0 30px 0;
+    margin: 60px 0 35px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .section-title::before, .section-title::after {
     content: '';
     height: 2px;
-    width: 80px;
-    background-color: #ccc;
+    width: 70px;
+    background-color: var(--accent-gold);
     display: inline-block;
 }
 
 /* Produkte Rooster */
 .products {
-    padding: 0 5% 60px 5%;
+    padding: 0 6% 70px 6%;
 }
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
+    gap: 30px;
+    max-width: 1250px;
     margin: 0 auto;
 }
 
@@ -307,43 +321,39 @@ body {
     text-align: center;
     padding: 40px;
     font-weight: 700;
-    color: #666;
+    color: #64748b;
     display: none;
 }
 
 /* Kaart Ontwerp */
 .card {
-    background: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s;
-    border: 1px solid #eef2f5;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    backdrop-filter: blur(5px);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 43, 61, 0.12);
 }
 
 .card-book-img {
     width: 100%;
-    height: 250px;
+    height: 260px;
     object-fit: contain;
-    background-color: #f9fbfd;
-    padding: 10px;
-    border-bottom: 1px solid #eef2f5;
+    background-color: #ffffff;
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
 }
 
-/* Spesifieke Tema Kleure per Graad */
-.gr8-theme, .gr9-theme { background-color: #0b3c95; }
-.gr10-theme { background-color: #27991b; }
-.gr11-theme { background-color: #e67e22; }
-.gr12-theme { background-color: #c01c1c; }
-
 .card-body {
-    padding: 20px 15px;
+    padding: 22px 18px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -351,222 +361,162 @@ body {
 }
 
 .card-body h3 {
-    font-size: 0.95rem;
-    color: #333;
-    font-weight: 700;
+    font-size: 1rem;
+    color: var(--primary-blue);
+    font-weight: 800;
     margin-bottom: 8px;
 }
 
 .card-body .price {
-    font-size: 1.1rem;
-    color: #ff8400;
+    font-size: 1.25rem;
+    color: var(--primary-blue);
     font-weight: 800;
     margin-bottom: 15px;
 }
 
 .format-select {
     width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    background-color: #f9fbfd;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 15px;
+    color: #334155;
+    margin-bottom: 18px;
     outline: none;
     cursor: pointer;
     transition: border 0.3s;
 }
 
 .format-select:focus {
-    border-color: #0082a0;
+    border-color: var(--accent-gold);
 }
 
 /* Kaart Knoppies */
 .card-buttons {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     margin-top: auto;
 }
 
 .card-buttons button {
     flex: 1;
     padding: 12px 5px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.8rem;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .btn-buy {
-    background: white;
-    transition: background 0.3s;
+    background: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
 }
 
-.gr8 .btn-buy, .gr9 .btn-buy { border: 1.5px solid #0b3c95; color: #0b3c95; }
-.gr10 .btn-buy { border: 1.5px solid #27991b; color: #27991b; }
-.gr11 .btn-buy { border: 1.5px solid #e67e22; color: #e67e22; }
-.gr12 .btn-buy { border: 1.5px solid #c01c1c; color: #c01c1c; }
+.btn-buy:hover {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
 
 .btn-cart {
-    color: white;
+    background: var(--primary-blue);
+    color: #ffffff;
     border: none;
 }
 
-.card-buttons button:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+.btn-cart:hover {
+    background: #001f2c;
 }
 
-/* About Seksie */
+/* Oor Ons Seksie */
 .about-section {
-    padding: 60px 5%;
-    background: #ffffff;
+    padding: 80px 6%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
 }
 
 .about-container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
-}
-
-.about-image-wrapper {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-}
-
-.about-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 5px solid #f4f9fc;
-}
-
-.about-text {
-    flex: 1.5;
-    min-width: 300px;
 }
 
 .about-text h3 {
-    font-size: 1.8rem;
-    color: #00364a;
-    margin-bottom: 15px;
-    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--primary-blue);
+    margin-bottom: 18px;
+    font-weight: 800;
+    text-align: center;
 }
 
 .about-text p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 20px;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 25px;
 }
 
-/* Contact Seksie */
+/* Kontak Seksie */
 .contact-section {
-    padding: 60px 5% 80px 5%;
-    background: #f4f9fc;
+    padding: 70px 6% 90px 6%;
 }
 
 .contact-container {
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
     text-align: center;
+    border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .contact-card {
-    padding: 25px;
-    background: #f8fbfd;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 30px 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    transition: all 0.3s ease;
     text-decoration: none;
     color: inherit;
     display: block;
-    border: 1px solid #eef2f5;
+    border: 1px solid #e2e8f0;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-color: var(--accent-gold);
 }
 
 .contact-card i {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 15px;
+    color: var(--primary-blue);
 }
 
-.contact-card.phone i { color: #00364a; }
 .contact-card.whatsapp i { color: #25D366; }
-.contact-card.email i { color: #ff8400; }
 
 .contact-card h4 {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: #333;
+    color: var(--primary-blue);
+    font-weight: 700;
 }
 
 .contact-card p {
     font-size: 0.95rem;
-    color: #666;
+    color: #64748b;
     font-weight: 600;
-}
-
-/* Profiel Vorms / Inputs Groep */
-.profile-form {
-    text-align: left;
-    margin-top: 15px;
-}
-
-.profile-form label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #00364a;
-    margin-bottom: 5px;
-}
-
-.profile-form input, .profile-form textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    outline: none;
-    font-family: inherit;
-}
-
-.btn-save-profile {
-    width: 100%;
-    background: #00364a;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn-save-profile:hover {
-    background: #00222e;
 }
 
 /* Modals */
@@ -574,40 +524,34 @@ body {
     display: none;
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 20, 30, 0.7);
     z-index: 2000;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
 }
 
 .cart-modal-content {
     background: white;
-    padding: 30px;
-    border-radius: 15px;
+    padding: 35px;
+    border-radius: 20px;
     width: 90%;
-    max-width: 500px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    max-width: 520px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
     position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
 }
 
 .close-modal {
     position: absolute;
-    top: 15px; right: 20px;
-    font-size: 1.5rem;
+    top: 18px; right: 22px;
+    font-size: 1.6rem;
     cursor: pointer;
-    color: #888;
+    color: #94a3b8;
 }
 
 .cart-items-list {
     list-style: none;
-    max-height: 240px;
+    max-height: 250px;
     overflow-y: auto;
     margin-bottom: 20px;
 }
@@ -616,29 +560,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #edf2f7;
+    padding: 14px 0;
+    border-bottom: 1px solid #f1f5f9;
 }
 
 .cart-total {
     display: flex;
     justify-content: space-between;
     font-weight: 800;
-    font-size: 1.2rem;
-    color: #00364a;
+    font-size: 1.25rem;
+    color: var(--primary-blue);
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 2px dashed #edf2f7;
+    border-top: 2px dashed #e2e8f0;
 }
 
 .btn-checkout {
     width: 100%;
     background: #25D366;
     color: white;
-    padding: 14px;
+    padding: 15px;
     border: none;
     border-radius: 50px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1rem;
     margin-top: 20px;
     cursor: pointer;
@@ -650,29 +594,24 @@ body {
 }
 
 .btn-checkout:hover {
-    background: #20ba59;
+    background: #1fbe57;
     transform: translateY(-2px);
-}
-
-.empty-message {
-    color: #777;
-    padding: 30px 0;
-    font-weight: 600;
 }
 
 /* Footer */
 .footer {
-    background: #002d3e;
+    background: var(--primary-blue);
     color: white;
+    border-top: 3px solid var(--accent-gold);
 }
 
 .features-bar {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    padding: 30px 5%;
+    padding: 35px 6%;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 0 auto;
 }
 
@@ -683,8 +622,8 @@ body {
 }
 
 .feature-item i {
-    font-size: 1.8rem;
-    color: #a0c1cf;
+    font-size: 2rem;
+    color: var(--accent-gold);
 }
 
 .feature-text strong {
@@ -694,8 +633,8 @@ body {
 }
 
 .feature-text span {
-    font-size: 0.8rem;
-    color: #a0c1cf;
+    font-size: 0.82rem;
+    color: #94a3b8;
 }
 
 .footer-bottom {
@@ -704,17 +643,17 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 20px 5%;
-    max-width: 1200px;
+    padding: 25px 6%;
+    max-width: 1250px;
     margin: 0 auto;
     font-size: 0.85rem;
-    color: #ccc;
+    color: #94a3b8;
 }
 
 .social-icons {
     display: flex;
-    gap: 15px;
-    font-size: 1.1rem;
+    gap: 18px;
+    font-size: 1.2rem;
 }
 
 .social-icons a {
@@ -723,34 +662,15 @@ body {
 }
 
 .social-icons a:hover {
-    color: #ffd44f;
+    color: var(--accent-gold);
 }
 
-.payment-gateways {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.4rem;
-}
-
-.payment-gateways .payfast-text {
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: white;
-}
-
-.payment-gateways .payfast-text span {
-    color: #00bc8c;
-}
-
-/* MEDIA QUERIES (Mobile Friendly) */
+/* Responsive Styles */
 @media (max-width: 900px) {
-    .hero-images {
-        height: 250px;
-    }
-    .hero-book-preview { width: 90px; }
-    .hero-book-preview.b3 { width: 100px; }
-    .hero-content h1 { font-size: 3.5rem; }
+    .hero-images { height: 260px; }
+    .hero-book-preview { width: 95px; }
+    .hero-book-preview.b3 { width: 105px; }
+    .hero-content h1 { font-size: 3.2rem; }
 }
 
 @media (max-width: 768px) {
@@ -759,23 +679,23 @@ body {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: #00364a;
+        background: var(--primary-blue);
         position: absolute;
         top: 100%;
         left: 0;
-        padding: 20px 0;
+        padding: 25px 0;
         text-align: center;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     .nav-menu.active { display: flex; }
     
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 40px 5%;
+        padding: 60px 6%;
     }
     .hero-content h1 { font-size: 2.8rem; }
-    .hero-content h2 { font-size: 2rem; }
+    .hero-content h2 { font-size: 1.8rem; }
     .hero-buttons { justify-content: center; }
     
     .hero-images {
@@ -783,12 +703,11 @@ body {
         height: 200px;
         margin-top: 20px;
     }
-    .hero-book-preview { width: 70px; position: static; transform: none !important; margin: -10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-    .hero-book-preview.b3 { width: 80px; z-index: 10; }
+    .hero-book-preview { width: 75px; position: static; transform: none !important; margin: -8px; }
+    .hero-book-preview.b3 { width: 85px; z-index: 10; }
     
-    .about-container { flex-direction: column; text-align: center; }
+    .about-container { text-align: center; }
     .footer-bottom { flex-direction: column; text-align: center; }
-    .search-container.active .search-input { width: 130px; }
 }
 </style>
 </head>
@@ -805,35 +724,35 @@ body {
     </div>
 
     <ul class="nav-menu" id="navMenu">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#tuis" class="active">Tuis</a></li>
+        <li><a href="#winkel">Winkel</a></li>
+        <li><a href="#oor-ons">Oor Ons</a></li>
+        <li><a href="#kontak">Kontak</a></li>
     </ul>
     
     <div class="nav-icons">
         <div class="search-container" id="searchContainer">
-            <input type="text" class="search-input" id="searchInput" placeholder="Soek graad of formaat..." oninput="filterProducts()">
+            <input type="text" class="search-input" id="searchInput" placeholder="Soek graad..." oninput="filterProducts()">
             <i class="fas fa-search" onclick="toggleSearch()"></i>
         </div>
         
-        <i class="far fa-user" onclick="toggleProfileModal()"></i>
+        <i class="far fa-user" onclick="toggleProfileModal()" title="My Profiel"></i>
         
-        <div class="cart-icon" onclick="toggleCartModal()">
+        <div class="cart-icon" onclick="toggleCartModal()" title="Mandjie">
             <i class="fas fa-shopping-basket"></i>
             <span class="cart-badge">0</span>
         </div>
     </div>
 </nav>
 
-<section id="home" class="hero">
+<section id="tuis" class="hero">
     <div class="hero-content">
         <h2>NXT LEVEL</h2>
         <h1>Rekeningkunde</h1>
         <div class="banner-pill">KOM LEER LIEFDE EN TEGNIEK!</div>
         <div class="hero-buttons">
-            <a href="#shop" class="btn btn-orange">Shop Now</a>
-            <a href="#shop" class="btn btn-outline">Kies jou graad</a>
+            <a href="#winkel" class="btn btn-gold">Koop Aanlyn</a>
+            <a href="#winkel" class="btn btn-outline">Kies Jou Graad</a>
         </div>
     </div>
     
@@ -846,11 +765,11 @@ body {
     </div>
 </section>
 
-<section id="shop" class="products">
+<section id="winkel" class="products">
     <h2 class="section-title">KIES JOU GRAAD</h2>
     
     <div class="product-grid" id="productGrid">
-        <div class="no-results" id="noResultsMessage">Oeps! Geen boeke gevind vir daardie soektog nie.</div>
+        <div class="no-results" id="noResultsMessage">Geen boeke gevind vir daardie soektog nie.</div>
         
         <!-- Graad 8 Card -->
         <div class="card gr8" data-id="gr8" data-title="Graad 8 Rekeningkunde">
@@ -860,11 +779,10 @@ body {
                 <div class="price">R250.00</div>
                 <select class="format-select" onchange="handleFormatChange(this)">
                     <option value="Fisiese Boek" data-price="250.00">Fisiese Boek — R250.00</option>
-                    <option value="e-Boek (PDF)" data-price="180.00">e-Boek (PDF) — R180.00</option>
                 </select>
                 <div class="card-buttons">
-                    <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-                    <button class="btn-cart gr8-theme" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="btn-buy" onclick="buyNow(this)">Koop Nou</button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Voeg By</button>
                 </div>
             </div>
         </div>
@@ -877,11 +795,10 @@ body {
                 <div class="price">R250.00</div>
                 <select class="format-select" onchange="handleFormatChange(this)">
                     <option value="Fisiese Boek" data-price="250.00">Fisiese Boek — R250.00</option>
-                    <option value="e-Boek (PDF)" data-price="180.00">e-Boek (PDF) — R180.00</option>
                 </select>
                 <div class="card-buttons">
-                    <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-                    <button class="btn-cart gr9-theme" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="btn-buy" onclick="buyNow(this)">Koop Nou</button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Voeg By</button>
                 </div>
             </div>
         </div>
@@ -894,11 +811,10 @@ body {
                 <div class="price">R250.00</div>
                 <select class="format-select" onchange="handleFormatChange(this)">
                     <option value="Fisiese Boek" data-price="250.00">Fisiese Boek — R250.00</option>
-                    <option value="e-Boek (PDF)" data-price="180.00">e-Boek (PDF) — R180.00</option>
                 </select>
                 <div class="card-buttons">
-                    <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-                    <button class="btn-cart gr10-theme" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="btn-buy" onclick="buyNow(this)">Koop Nou</button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Voeg By</button>
                 </div>
             </div>
         </div>
@@ -911,11 +827,10 @@ body {
                 <div class="price">R250.00</div>
                 <select class="format-select" onchange="handleFormatChange(this)">
                     <option value="Fisiese Boek" data-price="250.00">Fisiese Boek — R250.00</option>
-                    <option value="e-Boek (PDF)" data-price="180.00">e-Boek (PDF) — R180.00</option>
                 </select>
                 <div class="card-buttons">
-                    <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-                    <button class="btn-cart gr11-theme" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="btn-buy" onclick="buyNow(this)">Koop Nou</button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Voeg By</button>
                 </div>
             </div>
         </div>
@@ -928,11 +843,10 @@ body {
                 <div class="price">R250.00</div>
                 <select class="format-select" onchange="handleFormatChange(this)">
                     <option value="Fisiese Boek" data-price="250.00">Fisiese Boek — R250.00</option>
-                    <option value="e-Boek (PDF)" data-price="180.00">e-Boek (PDF) — R180.00</option>
                 </select>
                 <div class="card-buttons">
-                    <button class="btn-buy" onclick="buyNow(this)">Buy Now</button>
-                    <button class="btn-cart gr12-theme" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    <button class="btn-buy" onclick="buyNow(this)">Koop Nou</button>
+                    <button class="btn-cart" onclick="addToCart(this)"><i class="fas fa-cart-plus"></i> Voeg By</button>
                 </div>
             </div>
         </div>
@@ -940,27 +854,30 @@ body {
     </div>
 </section>
 
-<section id="about" class="about-section">
+<section id="oor-ons" class="about-section">
     <h2 class="section-title">OOR DIE SKRYWERS</h2>
     <div class="about-container">
-        <div class="about-image-wrapper">
-            <img src="sunette.jpeg" class="about-img" alt="Die NXT Level Span">
-        </div>
         <div class="about-text">
-    <h3>Ontmoet die Span</h3>
-    <p>As 'n groep van 4 passievolle en toegewyde Rekeningkunde-juffrouens (waarvan een 'n Geoktrooieerde Rekenmeester / CA is) by die prestigeryke <strong>Grey College in Bloemfontein</strong>, sien ons daagliks hoe leerders worstel met tradisionele handboeke. Te veel skoliere raak verlore in ingewikkelde jargon en vae verduidelikings, wat veroorsaak dat hulle vrees ontwikkel vir 'n vak wat eintlik logies en opwindend behoort te wees.</p>
-    <p>Dit is waarom ons die <strong>NXT Level Rekeningkunde</strong>-reeks ontwikkel het. Hierdie boeke is nie net nog 'n stel reëls nie; dit is 'n beproefde metodologie wat fokus op die heropbou van selfvertroue deur leerders te leer om met <em>liefde en tegniek</em> te dink. Deur visuele strukture, eenvoudige dog kragtige stappe, en praktiese benaderings, oorbrug hierdie gidse die gaping tussen verwarring en uitblinkers-punte.</p>
-    <p>Of jy nou in Graad 8 begin bou aan jou fondasie, of in Graad 12 voorberei vir jou finale nasionale eksamen—hierdie reeks is jou persoonlike gids na sukses. Moenie toelaat dat Rekeningkunde jou punte terughou nie. Neem jou akademiese reis na die volgende vlak!</p>
-    <a href="#shop" class="btn btn-orange">Kry Jou Gids Nou</a>
-</div>
+            <h3>Ontmoet die Span</h3>
+            <p>
+                As 'n groep van 4 passievolle en toegewyde Rekeningkunde-onderwyseresse (waarvan een 'n Geoktrooieerde Rekenmeester / CA is) by verskillende skole in verskillende provinsies, sien ons daagliks hoe leerders worstel met tradisionele handboeke. Te veel skoliere raak verlore in ingewikkelde terminologie en vae verduidelikings, wat veroorsaak dat hulle vrees ontwikkel vir 'n vak wat eintlik logies en opwindend behoort te wees.
+                <br><br>
+                Dit is waarom ons die NXT Level Rekeningkunde-reeks ontwikkel het. Hierdie boeke is nie net nog 'n stel reëls nie; dit is 'n beproefde metodologie wat fokus op die heropbou van selfvertroue deur leerders te leer om met liefde en tegniek te dink. Deur visuele strukture, eenvoudige dog kragtige oefeninge, en praktiese benaderings, oorbrug hierdie gidse die gaping tussen verwarring en top-prestasie.
+                <br><br>
+                Of jy nou in Graad 8 begin bou aan jou fondasie, of in Graad 12 voorberei vir jou finale nasionale eksamen—hierdie reeks is jou persoonlike gids na sukses. Neem jou akademiese reis na die volgende vlak!
+            </p>
+            <div style="text-align: center;">
+                <a href="#winkel" class="btn btn-gold">Kry Jou Gids Nou</a>
+            </div>
+        </div>
     </div>
 </section>
 
-<section id="contact" class="contact-section">
+<section id="kontak" class="contact-section">
     <h2 class="section-title">KONTAK ONS</h2>
     <div class="contact-container">
         <h3>Het jy enige vrae of grootmaatbestellings?</h3>
-        <p style="color: #666; margin-top: 10px;">Ons span is gereed om jou of jou skool by te staan met die beste kurrikulum-oplossings.</p>
+        <p style="color: #64748b; margin-top: 10px;">Ons span is gereed om jou of jou skool by te staan met die beste kurrikulum-oplossings.</p>
         
         <div class="contact-grid">
             <a href="tel:0832126345" class="contact-card phone">
@@ -984,11 +901,11 @@ body {
     </div>
 </section>
 
-<!-- Modals ... -->
+<!-- Modals -->
 <div id="cartModal" class="cart-modal" onclick="closeCartOnOutsideClick(event)">
     <div class="cart-modal-content">
         <span class="close-modal" onclick="toggleCartModal()">&times;</span>
-        <h3>Jou Mandjie</h3>
+        <h3 style="color: var(--primary-blue); font-weight: 800;">Jou Mandjie</h3>
         <ul id="cartItemsList" class="cart-items-list"></ul>
         <div class="cart-total">
             <span>Totaal:</span>
@@ -1003,24 +920,26 @@ body {
 <div id="profileModal" class="cart-modal" onclick="closeProfileOnOutsideClick(event)">
     <div class="cart-modal-content">
         <span class="close-modal" onclick="toggleProfileModal()">&times;</span>
-        <h3>My Profiel</h3>
-        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Stoor jou besonderhede eenmalig hier.</p>
+        <h3 style="color: var(--primary-blue); font-weight: 800;">My Profiel</h3>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Stoor jou besonderhede eenmalig vir vinnige bestellings.</p>
         <div class="profile-form">
-            <label for="profName">Volledige Naam & Van:</label>
-            <input type="text" id="profName" placeholder="Bv. Johan Smit">
-            <label for="profEmail">E-pos Adres:</label>
-            <input type="email" id="profEmail" placeholder="Bv. johan@gmail.com">
-            <label for="profAddress">Afleweringsadres of Skoolnaam:</label>
-            <textarea id="profAddress" rows="3" placeholder="Bv. Grey College, Jannie de Waal Straat, Bloemfontein, 9301"></textarea>
-            <button class="btn-save-profile" onclick="saveProfileData()">Stoor Profiel</button>
+            <label for="profName" style="font-weight: 700; font-size: 0.85rem; color: var(--primary-blue);">Volledige Naam & Van:</label>
+            <input type="text" id="profName" placeholder="Bv. Johan Smit" style="width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:8px;">
+            
+            <label for="profEmail" style="font-weight: 700; font-size: 0.85rem; color: var(--primary-blue);">E-pos Adres:</label>
+            <input type="email" id="profEmail" placeholder="Bv. johan@gmail.com" style="width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:8px;">
+            
+            <label for="profAddress" style="font-weight: 700; font-size: 0.85rem; color: var(--primary-blue);">Afleweringsadres of Skoolnaam:</label>
+            <textarea id="profAddress" rows="3" placeholder="Bv. Grey College, Bloemfontein" style="width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:8px;"></textarea>
+            
+            <button onclick="saveProfileData()" style="width: 100%; background: var(--primary-blue); color: white; padding: 12px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer;">Stoor Profiel</button>
         </div>
     </div>
 </div>
 
 <footer class="footer">
     <div class="features-bar">
-        <div class="feature-item"><i class="fas fa-shield-alt"></i><div class="feature-text"><strong>Veilige Skakel</strong><span>Persoonlike afhandeling</span></div></div>
-        <div class="feature-item"><i class="fas fa-cloud-download-alt"></i><div class="feature-text"><strong>Direkte Aflaai</strong><span>E-boeke direk na aankoop</span></div></div>
+        <div class="feature-item"><i class="fas fa-shield-alt"></i><div class="feature-text"><strong>Veilige Betaling</strong><span>EFT besonderhede via WhatsApp</span></div></div>
         <div class="feature-item"><i class="fas fa-truck"></i><div class="feature-text"><strong>Vinnige Aflewering</strong><span>Fisiese boeke landwyd</span></div></div>
         <div class="feature-item"><i class="fas fa-headset"></i><div class="feature-text"><strong>Kliëntediens</strong><span>Ons is hier om te help</span></div></div>
     </div>
@@ -1033,16 +952,13 @@ body {
         <div>
             <p>&copy; 2026 NXT Level Rekeningkunde. Alle regte voorbehou.</p>
         </div>
-        <div class="payment-gateways">
-            <span class="payfast-text">pay<span>fast</span></span>
-            <i class="fab fa-cc-visa" style="color: #00579f;"></i>
-            <i class="fab fa-cc-mastercard" style="color: #ff5f00;"></i>
+        <div style="display: flex; gap: 10px; align-items: center; font-size: 1.2rem;">
+            <i class="fas fa-university"></i>
         </div>
     </div>
 </footer>
 
 <script>
-// --- Mobile Menu Toggle ---
 function toggleMobileMenu() {
     document.getElementById('navMenu').classList.toggle('active');
 }
@@ -1055,7 +971,7 @@ const sections = document.querySelectorAll('section, .hero');
 const navLinks = document.querySelectorAll('.nav-menu li a');
 
 window.addEventListener('scroll', () => {
-    let currentSection = 'home';
+    let currentSection = 'tuis';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         if (window.scrollY >= (sectionTop - 160)) {
@@ -1130,9 +1046,9 @@ function addToCart(buttonElement) {
     updateCartBadge();
     renderCart();
     
-    buttonElement.innerHTML = '<i class="fas fa-check"></i> Added!';
+    buttonElement.innerHTML = '<i class="fas fa-check"></i> Bygevoeg!';
     setTimeout(() => {
-        buttonElement.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+        buttonElement.innerHTML = '<i class="fas fa-cart-plus"></i> Voeg By';
     }, 1200);
 }
 
@@ -1162,7 +1078,7 @@ function renderCart() {
     listElement.innerHTML = '';
     
     if (cart.length === 0) {
-        listElement.innerHTML = '<li class="empty-message">Jou mandjie is nog leeg.</li>';
+        listElement.innerHTML = '<li style="padding:20px 0; text-align:center; color:#64748b;">Jou mandjie is nog leeg.</li>';
         totalElement.innerText = 'R0.00';
         return;
     }
@@ -1173,13 +1089,13 @@ function renderCart() {
         const li = document.createElement('li');
         li.className = 'cart-item';
         li.innerHTML = `
-            <div class="cart-item-details">
-                <div class="cart-item-title">${item.title}</div>
-                <div class="cart-item-meta">${item.format} (x${item.quantity})</div>
+            <div>
+                <div style="font-weight:700; color:var(--primary-blue);">${item.title}</div>
+                <div style="font-size:0.85rem; color:#64748b;">${item.format} (x${item.quantity})</div>
             </div>
-            <div class="cart-item-right">
-                <div class="cart-item-price">R${itemTotal.toFixed(2)}</div>
-                <i class="fas fa-trash-alt remove-btn" onclick="removeFromCart('${item.cartItemId}')"></i>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div style="font-weight:800; color:var(--primary-blue);">R${itemTotal.toFixed(2)}</div>
+                <i class="fas fa-trash-alt" style="color:#ef4444; cursor:pointer;" onclick="removeFromCart('${item.cartItemId}')"></i>
             </div>
         `;
         listElement.appendChild(li);
@@ -1242,7 +1158,7 @@ function checkoutToWhatsApp() {
         total += subtotal;
     });
     message += `*Totale Bedrag:* R${total.toFixed(2)}\n\n`;
-    message += "Stuur asb. vir my die bankbesonderhede vir 'n EFT / PayFast skakel!";
+    message += "Stuur asb. vir my die bankbesonderhede om die EFT te kan doen!";
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/27832126345?text=${encodedMessage}`, '_blank');
 }
